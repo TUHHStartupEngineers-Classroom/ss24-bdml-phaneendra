@@ -196,11 +196,11 @@ dept_job_role_tbl %>%
                            "M", sep = "")) %>%
   #Plotting
   ggplot(aes(cost_of_attrition, y = name)) +
-  geom_segment(aes(xend = 0, yend = name),    color = "#2dc6d6") +
-  geom_point(  aes(size = cost_of_attrition), color = "#2dc6d6") +
+  geom_segment(aes(xend = 0, yend = name),    color = "red") +
+  geom_point(  aes(size = cost_of_attrition), color = "yellow") +
   scale_x_continuous(labels = scales::dollar) +
   geom_label(aes(label = cost_text, size = cost_of_attrition),
-             hjust = "inward", color = "#2dc6d6") +
+             hjust = "inward", color = "blue") +
   scale_size(range = c(3, 5)) +
   labs(title = "Estimated cost of Attrition: By Dept and Job Role",
        y = "",

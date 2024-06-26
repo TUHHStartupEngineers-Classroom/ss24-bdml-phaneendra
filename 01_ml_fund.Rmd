@@ -249,10 +249,10 @@ k_means_mapped_tbl %>%
     
     # Visualization
     ggplot(aes(centers, tot.withinss)) +
-    geom_point(color = "#2DC6D6", size = 4) +
-    geom_line(color = "#2DC6D6", size = 1) +
+    geom_point(color = "blue", size = 4) +
+    geom_line(color = "green", size = 1) +
     # Add labels (which are repelled a little)
-    ggrepel::geom_label_repel(aes(label = centers), color = "#2DC6D6") + 
+    ggrepel::geom_label_repel(aes(label = centers), color = "red") + 
     
     # Formatting
     labs(title = "Skree Plot",
@@ -375,7 +375,7 @@ umap_kmeans_results_tbl <- umap_results_tbl %>%
 
 # Output: umap_kmeans_results_tbl 
 typeof(palette_light() %>% sample(3))
-typeof(c("#2d72d6", "#2dc6d6", "#2dd692"))
+typeof(c("blue", "green", "violet"))
 ```
 
 Plot the K-Means and UMAP results.
@@ -395,7 +395,7 @@ umap_kmeans_results_tbl %>%
     # Geometries
     geom_point(alpha=0.5) +
     # Formatting
-    scale_color_manual(values= c("#2d72d6", "#2dc6d6", "#2dd692")) +
+    scale_color_manual(values= c("pink", "orange", "yellow")) +
     labs(title = "Company Segmentation: 2D Projection",
     subtitle = "UMAP 2D Projection with K-Means Cluster Assignment") +
     theme(legend.position = "none")

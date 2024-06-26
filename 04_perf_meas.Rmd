@@ -120,8 +120,8 @@ theme_new <- theme(
   legend.position  = "bottom",
   legend.key       = element_blank(),
   panel.background = element_rect(fill   = "transparent"),
-  panel.border     = element_rect(color = "black", fill = NA, size = 0.5),
-  panel.grid.major = element_line(color = "grey", size = 0.333)
+  panel.border     = element_rect(color = "pink", fill = NA, size = 0.5),
+  panel.grid.major = element_line(color = "orange", size = 0.333)
 ) 
 extract_h2o_model_name_by_position <- function(h2o_leaderboard, n = 1, verbose = T) {
   
@@ -147,7 +147,7 @@ performance_tbl %>%
 performance_tbl %>%
   ggplot(aes(x = threshold)) +
   geom_line(aes(y = precision), color = "blue", size = 1) +
-  geom_line(aes(y = recall), color = "red", size = 1) +
+  geom_line(aes(y = recall), color = "yellow", size = 1) +
   
   # Insert line where precision and recall are harmonically optimized
   geom_vline(xintercept = h2o.find_threshold_by_max_metric(performance_h2o, "f1")) +
@@ -181,7 +181,7 @@ model_metrics_tbl %>%
   geom_line(size = 1) +
   
   # just for demonstration purposes
-  geom_abline(color = "red", linetype = "dotted") +
+  geom_abline(color = "orange", linetype = "dotted") +
   
   theme_new +
   theme(
@@ -377,7 +377,7 @@ plot_h2o_performance <- function(h2o_leaderboard, newdata, order_by = c("auc", "
                color = model_id, linetype = !! order_by_expr)) +
     geom_line(size = size,) +
     geom_segment(x = 0, y = 0, xend = 1, yend = 1, 
-                 color = "red", size = size, linetype = "dotted") +
+                 color = "pink", size = size, linetype = "dotted") +
     theme_new +
     expand_limits(x = c(0, 1), y = c(0, 1)) +
     labs(title = "Gain",
@@ -391,7 +391,7 @@ plot_h2o_performance <- function(h2o_leaderboard, newdata, order_by = c("auc", "
                color = model_id, linetype = !! order_by_expr)) +
     geom_line(size = size) +
     geom_segment(x = 0, y = 1, xend = 1, yend = 1, 
-                 color = "red", size = size, linetype = "dotted") +
+                 color = "blue", size = size, linetype = "dotted") +
     theme_new +
     expand_limits(x = c(0, 1), y = c(0, 1)) +
     labs(title = "Lift",
@@ -414,11 +414,11 @@ plot_h2o_performance <- function(h2o_leaderboard, newdata, order_by = c("auc", "
     
     # cowplot::draw_label() draws text on a ggdraw layer / ggplot object
     draw_label("H2O Model Metrics", size = 18, fontface = "bold", 
-               color = "#2C3E50")
+               color = "#2Ce")
   
   p_subtitle <- ggdraw() + 
     draw_label(glue("Ordered by {toupper(order_by)}"), size = 10,  
-               color = "#2C3E50")
+               color = "#2C3")
   
   # Combine everything
   ret <- plot_grid(p_title, p_subtitle, p, p_legend, 

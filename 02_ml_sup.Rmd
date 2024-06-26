@@ -19,7 +19,6 @@ knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
 
 
 ```{r}
-install.packages("tidymodels")
 library(tidymodels)
 library(broom.mixed)
 library(xgboost)
@@ -47,7 +46,7 @@ model_sales_tbl %>%
   
   ggplot(aes(frame_material, total_sales)) +
   geom_violin() +
-  geom_jitter(width = 0.1, alpha = 0.5, color = "#2c3e50") +
+  geom_jitter(width = 0.1, alpha = 0.5, color = "green") +
   #coord_flip() +
   facet_wrap(~ category_2) +
   scale_y_continuous(labels = scales::dollar_format(scale = 1e-6, suffix = "M", accuracy = 0.1)) +
@@ -153,7 +152,7 @@ g1 <- bike_features_tbl %>%
   
   ggplot(aes(category_2, price)) +
   geom_violin() +
-  geom_jitter(width = 0.1, alpha = 0.5, color = "#2dc6d6") +
+  geom_jitter(width = 0.1, alpha = 0.5, color = "red") +
   coord_flip() +
   facet_wrap(~ frame_material) +
   scale_y_continuous(labels = scales::dollar_format()) +
@@ -207,7 +206,7 @@ predictions_new_race_alu_tbl <- models_tbl %>%
   left_join(new_race_alu, by = "category_2")
 predictions_new_race_alu_tbl
 g2 <- g1 +
-  geom_point(aes(y = .pred), color = "red", alpha = 0.5,
+  geom_point(aes(y = .pred), color = "blue", alpha = 0.5,
              data = predictions_new_race_alu_tbl) +
   ggrepel::geom_text_repel(aes(label = model_id, y = .pred),
                            size = 3,
